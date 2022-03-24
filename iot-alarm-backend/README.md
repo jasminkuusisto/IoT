@@ -12,13 +12,14 @@
 
 ### How to run the backend
 
+- Set upp a database and set the database credentials in queries.js
 - Run 'npm start' in terminal. The app is then listening to the port 3001.
 
 ### How to test the API endpoints
 
 - Install [Postman](https://www.postman.com/)
-- Create a new GET-reguest to http://localhost:3001/ and send it.
-  If the backend is running you should receive 'Hello world!' in Postman's response window.
+- Create for example a new GET-reguest to http://localhost:3001/ and send it.
+  If the backend is running you should receive 'IoT application!' in Postman's response window.
 
 ### More information
 
