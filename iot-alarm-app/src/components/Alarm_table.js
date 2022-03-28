@@ -3,6 +3,10 @@ import Record from './Alarm_record'
 const RecTable = () => {
     // Get data from SQL database
     //const records = useState(data)[0];
+    fetch('http://localhost:3001/records/')
+      .then(response => response.json())
+      .then(data => console.log(data));
+      
     const records = [
         {
         "message": 'This is how alarms will be shown', 
@@ -28,7 +32,7 @@ const RecTable = () => {
           ))}
         </tbody>
       </table>
-    );
+  );
 }
  
 export default RecTable;

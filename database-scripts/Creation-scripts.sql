@@ -13,12 +13,10 @@ CREATE DATABASE "IoT"
 
 CREATE TABLE public.records
 (
-    id integer NOT NULL DEFAULT nextval('records_id_seq'::regclass),
+    id SERIAL,
     date timestamp without time zone NOT NULL,
     CONSTRAINT records_pkey PRIMARY KEY (id)
 )
-
-TABLESPACE pg_default;
 
 ALTER TABLE public.records
     OWNER to postgres;
