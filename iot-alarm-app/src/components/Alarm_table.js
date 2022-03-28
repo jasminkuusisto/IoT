@@ -1,25 +1,29 @@
+import { useState, useEffect } from 'react'
 import Record from './Alarm_record'
 
 const RecTable = () => {
-    let response = await fetch('http://localhost:3001/records/');
-    const records = await response.json();
+  const [records, setRecords] = useState([])
 
-    console.log(records);
-    return ( 
-        <table className="alarm-record-table">
-        <thead>
-          <tr>
-            <th>Info</th>
-            <th>Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          {records.map((rec, i) => (
-            <Record key={i} rec={rec}/>
-          ))}
-        </tbody>
-      </table>
-    );
+  useEffect (() => {
+    fetch('http://localhost:3001/records/')
+      .then(res => setRecords(res.data))
+  })
+
+  return (
+    <table className="alarm-record-table">
+      <thead>
+        <tr>
+          <th>Info</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {records.map((rec, i) => (
+          <Record key={i} rec={rec}/>
+        ))}
+      </tbody>
+    </table>
+  );
     
     /*
     const records = [
