@@ -15,6 +15,7 @@ CREATE TABLE public.records
 (
     id SERIAL,
     date timestamp without time zone NOT NULL,
+    description VARCHAR(500),
     CONSTRAINT records_pkey PRIMARY KEY (id)
 )
 

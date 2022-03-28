@@ -5,9 +5,14 @@ const RecTable = () => {
   const [records, setRecords] = useState([])
 
   useEffect (() => {
-    fetch('http://localhost:3001/records/')
-      .then(res => setRecords(res.data))
-  })
+    fetch('http://localhost:3001/records/', {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
+      .then(res => res.json())
+      .then(data => setRecords(data))
+  }, []);
 
   return (
     <table className="alarm-record-table">
@@ -24,19 +29,6 @@ const RecTable = () => {
       </tbody>
     </table>
   );
-    
-    /*
-    const records = [
-        {
-        "message": 'This is how alarms will be shown', 
-        "time": '19:00'
-        },
-        {
-        "message": 'Example alarm 1', 
-        "time": '18:50'
-        }
-    ];
-    */
 }
  
 export default RecTable;

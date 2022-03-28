@@ -1,8 +1,8 @@
 const Record = ({ rec }) => {
     return (
         <tr>
-            <td className="record">{rec.message}</td>
-            <td className="record">{rec.time}</td>
+            <td className="record">{rec.description}</td>
+            <td className="record">{rec.date}</td>
         </tr>
     );
 }
