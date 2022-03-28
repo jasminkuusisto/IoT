@@ -18,8 +18,8 @@ const RecTable = () => {
     <table className="alarm-record-table">
       <thead>
         <tr>
-          <th>Info</th>
-          <th>Time</th>
+          <th>Record Info</th>
+          <th>Date</th>
         </tr>
       </thead>
       <tbody>
