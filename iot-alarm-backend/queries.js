@@ -9,7 +9,7 @@ const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'IoT',
-  password: 'norsu',
+  password: 'mattiTAHTOO1',
   port: 5433,
 })
 
@@ -38,14 +38,15 @@ const getRecordsByTime = (request, response) => {
 
 // Add a new record
 const createRecord = (request, response) => {
-  const { date } = request.body
+  const { date } = request.body;
+  const description = 'New alarm in room x from device y';
 
-  pool.query('INSERT INTO Records(date) VALUES ($1)', [date], (error, results) => {
+  pool.query('INSERT INTO Records (date, description) VALUES ($1, $2)', [date, description], (error, results) => {
     if (error) {
-      throw error
+      throw error;
     }
-    response.status(201).send(`A new record is created.`)
-  })
+    response.status(201).send(`A new record is created.`);
+  });
 }
 
 // Export database functions

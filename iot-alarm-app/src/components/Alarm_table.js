@@ -6,7 +6,6 @@ const RecTable = () => {
 
   useEffect (() => {
     (function fetchData() {
-      console.log('interval fired')
       fetch('http://localhost:3001/records/', {
         headers: {
           'Access-Control-Allow-Origin': '*'
@@ -21,20 +20,25 @@ const RecTable = () => {
   }, []);
 
   let lastRecordToday = false;
+  let hoursBetweenDates = 0;
+  let minutesBetweenDates = 0;
   if (records.length > 0) {
     const lastRecordDt = new Date(Date.parse(records[0].date));
     const now = new Date();
     const msBetweenDates = Math.abs(lastRecordDt.getTime() - now.getTime());
-    const hoursBetweenDates = msBetweenDates / (60 * 60 * 1000);
-
+    hoursBetweenDates = Math.floor(msBetweenDates / (60 * 60 * 1000));
+   
     if (hoursBetweenDates < 24) {
       lastRecordToday = true;
+      minutesBetweenDates = Math.floor((msBetweenDates - hoursBetweenDates*60*60*1000) / (60 * 1000));
     }
   }
 
   return (
     <div>
-      {lastRecordToday ? <p>An alarm was fired within 24 hours!</p> : ''}
+      {lastRecordToday ? (
+        <p>The latest alarm was fired {hoursBetweenDates} hours and {minutesBetweenDates} minutes ago!</p>
+      ) : ''}
       <table className="alarm-record-table">
         <thead>
           <tr>

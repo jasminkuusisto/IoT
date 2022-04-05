@@ -1,4 +1,5 @@
 const Record = ({ rec }) => {
+    // TODO: Check timezone
     let d = new Date(Date.parse(rec.date))
 
     return (
