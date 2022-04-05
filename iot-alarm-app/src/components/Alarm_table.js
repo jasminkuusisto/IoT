@@ -25,12 +25,12 @@ const RecTable = () => {
   if (records.length > 0) {
     const lastRecordDt = new Date(Date.parse(records[0].date));
     const now = new Date();
-    const msBetweenDates = Math.abs(lastRecordDt.getTime() - now.getTime());
-    hoursBetweenDates = Math.floor(msBetweenDates / (60 * 60 * 1000));
+    const minutesFromRecord = Math.floor(Math.abs(lastRecordDt.getTime() - now.getTime()) / (60 * 1000));
+    hoursBetweenDates = Math.floor(minutesFromRecord / 60);
    
     if (hoursBetweenDates < 24) {
       lastRecordToday = true;
-      minutesBetweenDates = Math.floor((msBetweenDates - hoursBetweenDates*60*60*1000) / (60 * 1000));
+      minutesBetweenDates = minutesFromRecord - hoursBetweenDates*60;
     }
   }
 
