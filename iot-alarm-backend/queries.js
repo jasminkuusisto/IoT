@@ -15,7 +15,7 @@ const pool = new Pool({
 
 // Get all the records
 const getRecords = (request, response) => {
-    pool.query('SELECT * FROM Records ORDER BY date ASC', (error, results) => {
+    pool.query('SELECT date, description FROM Records ORDER BY date DESC', (error, results) => {
       if (error) {
         throw error
       }
@@ -28,7 +28,7 @@ const getRecordsByTime = (request, response) => {
   const startTime = request.params.startTime
   const endTime = request.params.endTime
 
-  pool.query('SELECT * FROM Records WHERE date > $1 and date < $2', [startTime, endTime], (error, results) => {
+  pool.query('SELECT date, description FROM Records WHERE date > $1 and date < $2', [startTime, endTime], (error, results) => {
     if (error) {
       throw error
     }

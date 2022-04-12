@@ -1,23 +1,29 @@
 import { useState, useEffect } from 'react'
 import Record from './Alarm_record'
 
-const RecTable = () => {
-  const [records, setRecords] = useState([])
+
+const  RecTable = ({filterValues}) => {
+  let [records, setRecords] = useState([])
 
   useEffect (() => {
-    (function fetchData() {
-      fetch('http://localhost:3001/records/', {
+    function fetchData () {
+      fetch('http://localhost:3001/records/"' + filterValues.startDate + '"&"' + filterValues.endDate + '"', {
         headers: {
           'Access-Control-Allow-Origin': '*'
         }
       })
         .then(res => res.json())
-        .then(data => setRecords(data.reverse()))
+        .then(data => setRecords(data))
 
-      setTimeout(fetchData, 10000);
-    })();
+        //setTimeout(fetchData, 1000);
 
-  }, []);
+    } fetchData() 
+    }, [filterValues]);
+
+  // Sort records so that the newest record is first
+  records.sort(function(a,b){
+    return new Date(b.date) - new Date(a.date);
+  });
 
   let lastRecordToday = false;
   let hoursBetweenDates = 0;
@@ -36,9 +42,11 @@ const RecTable = () => {
 
   return (
     <div>
+      <br></br>
       {lastRecordToday ? (
         <p>The latest alarm was fired {hoursBetweenDates} hours and {minutesBetweenDates} minutes ago!</p>
       ) : ''}
+      <br></br>
       <table className="alarm-record-table">
         <thead>
           <tr>
@@ -54,6 +62,7 @@ const RecTable = () => {
       </table>
     </div>
   );
+          
 }
  
 export default RecTable;

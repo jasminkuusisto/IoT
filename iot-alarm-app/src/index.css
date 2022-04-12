@@ -15,12 +15,17 @@ p {
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 75%;
+  margin: auto;
+}
+
+th {
+  background: #d8eded;
 }
 
 td, th {
   border: 1px solid #aaaaaa;
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 
@@ -31,4 +36,9 @@ tr:nth-child(even) {
 .header {
   text-align: center;
   display: grid;
+  background:#d8eded;
+}
+
+.input-div {
+  text-align: center;
 }
