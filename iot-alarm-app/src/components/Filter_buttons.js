@@ -29,9 +29,9 @@ function FilterButtons({filterValues, setFilterValues}){
           <div className="input-div">
               <form>
                   <label>Start date:</label> &nbsp;
-                  <input type="date" name="startDate" defaultValue="2000-01-01" onChange={handleChangeStart}></input>&nbsp;&nbsp;&nbsp;
+                  <input type="date" name="startDate" defaultValue="2015-01-01" onChange={handleChangeStart}></input>&nbsp;&nbsp;&nbsp;
                   <label>End date:</label> &nbsp;
-                  <input type="date" name="endDate" defaultValue="2100-01-01" onChange={handleChangeEnd}></input>
+                  <input type="date" name="endDate" defaultValue="2050-01-01" onChange={handleChangeEnd}></input>
               </form>
           </div>
       </div>)
